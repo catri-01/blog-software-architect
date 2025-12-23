@@ -7,108 +7,157 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+// VERSION CORRIGÉE : Filtrage strict
+const allPosts = await getCollection('blog');
+const posts = allPosts
+    .filter(post => post.data.draft !== true)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+    <head>
+       <BaseHead title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+       <style>
+          main {
+             width: 100%;
+             max-width: 800px; /* Plus étroit pour une lecture type Medium */
+             margin: auto;
+             padding: 5em 1em;
+          }
+          .blog-header {
+             margin-bottom: 4rem;
+             border-bottom: 1px solid #f0f0f0;
+             padding-bottom: 2rem;
+          }
+          .blog-header h1 {
+             font-family: serif;
+             font-size: 3rem;
+             margin: 0;
+             font-style: italic;
+          }
+          .post-list {
+             display: flex;
+             flex-direction: column;
+             gap: 3rem;
+             list-style-type: none;
+             margin: 0;
+             padding: 0;
+          }
+          .post-item a {
+             display: grid;
+             grid-template-columns: 1fr 200px; /* Texte à gauche, image à droite */
+             gap: 2rem;
+             text-decoration: none;
+             align-items: center;
+          }
+          .post-content {
+             display: flex;
+             flex-direction: column;
+             gap: 0.5rem;
+          }
+          .post-item .title {
+             margin: 0;
+             color: #242424;
+             line-height: 1.3;
+             font-size: 1.5rem;
+             font-family: 'Inter', sans-serif;
+             font-weight: 800;
+             transition: color 0.2s ease;
+          }
+          .post-description {
+             color: #6b6b6b;
+             font-size: 1rem;
+             line-height: 1.4;
+             display: -webkit-box;
+             -webkit-line-clamp: 2;
+             -webkit-box-orient: vertical;
+             overflow: hidden;
+          }
+          .post-item img {
+             width: 200px;
+             height: 130px;
+             object-fit: cover;
+             border-radius: 4px;
+          }
+          .post-metadata {
+             display: flex;
+             align-items: center;
+             gap: 1rem;
+             font-size: 0.85rem;
+             color: #6b6b6b;
+             margin-top: 0.5rem;
+          }
+          .tag {
+             background: #f2f2f2;
+             padding: 2px 8px;
+             border-radius: 100px;
+             color: #242424;
+          }
+
+          /* Hover Effects */
+          .post-item a:hover .title {
+             color: #e67e5f; /* Ta couleur Terra */
+          }
+
+          @media (max-width: 720px) {
+             .post-item a {
+                grid-template-columns: 1fr; /* Pile tout sur mobile */
+                gap: 1rem;
+             }
+             .post-item img {
+                width: 100%;
+                height: 200px;
+                order: -1; /* Image au-dessus du texte sur mobile */
+             }
+             .blog-header h1 {
+                font-size: 2.2rem;
+             }
+          }
+       </style>
+    </head>
+    <body>
+       <Header />
+       <main>
+          <header class="blog-header">
+             <h1>Software Architecture</h1>
+             <p class="post-description">Latest insights, research, and technical thoughts on building resilient systems.</p>
+          </header>
+
+          <section>
+             <ul class="post-list">
+                {
+                   posts.map((post) => (
+                      <li class="post-item">
+                         <a href={`/blog/${post.id}/`}>
+                            <div class="post-content">
+                               <div class="post-metadata">
+                                  <span>Chancy Maouene</span>
+                                  <span>•</span>
+                                  <FormattedDate date={post.data.pubDate} />
+                               </div>
+                               <h4 class="title">{post.data.title}</h4>
+                               <p class="post-description">{post.data.description}</p>
+                               <div class="post-metadata">
+                                  <span class="tag">Architecture</span>
+                                  <span>5 min read</span>
+                               </div>
+                            </div>
+                            {post.data.heroImage && (
+                               <Image
+                                  width={400}
+                                  height={260}
+                                  src={post.data.heroImage}
+                                  alt={post.data.title}
+                               />
+                            )}
+                         </a>
+                      </li>
+                   ))
+                }
+             </ul>
+          </section>
+       </main>
+       <Footer />
+    </body>
 </html>

@@ -5,6 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import '../styles/global.css';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -16,12 +17,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<BaseHead title={title} description={description} />
 		<style>
 			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
+				width: 100%;
 				margin: 0;
 			}
 			.hero-image {
 				width: 100%;
+				margin-bottom: 2rem;
 			}
 			.hero-image img {
 				display: block;
@@ -34,23 +35,32 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
+				color: var(--color-primary);
 			}
 			.title h1 {
 				margin: 0 0 0.5em 0;
+				font-family: var(--font-serif);
+				color: var(--color-primary);
 			}
 			.date {
 				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+				color: var(--color-sage);
+				font-weight: 600;
 			}
-			.last-updated-on {
+			/* Style du bouton retour */
+			.back-link {
+				display: inline-block;
+				margin-top: 2rem;
+				margin-bottom: 2rem;
+				color: #e67e5f; /* Ta couleur Terra directe */
+				text-decoration: none;
+				font-family: serif;
 				font-style: italic;
+				font-weight: 600;
+				transition: transform 0.2s ease;
+			}
+			.back-link:hover {
+				transform: translateX(-8px);
 			}
 		</style>
 	</head>
@@ -62,7 +72,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<div class="hero-image">
 					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
 				</div>
+
 				<div class="prose">
+					<a href="/blog" class="back-link">
+						← Back to blog
+					</a>
+
 					<div class="title">
 						<div class="date">
 							<FormattedDate date={pubDate} />
@@ -78,6 +93,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<hr />
 					</div>
 					<slot />
+
+					<div style="border-top: 1px solid #eee; margin-top: 4rem;">
+						<a href="/blog" class="back-link">
+							← Back to blog
+						</a>
+					</div>
 				</div>
 			</article>
 		</main>

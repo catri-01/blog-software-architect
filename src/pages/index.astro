@@ -1,49 +1,135 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content'; // Vérifie qu'il n'est pas importé deux fois
+import portraitImage from '../assets/hero-portrait.png';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import '../styles/global.css';
+
+// VERSION CORRIGÉE : Filtrage strict des brouillons
+const allPosts = await getCollection('blog');
+const latestPosts = allPosts
+    .filter(post => post.data.draft !== true) // Filtre les brouillons
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
+
+const categories = ["Java Development", "Software Architecture", "Design Patterns", "Cloud & DevOps"];
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+    <head>
+       <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body class="bg-background text-primary">
+       <Header />
+       <main class="max-w-6xl mx-auto px-4 py-12">
+
+          <section class="flex flex-col md:flex-row items-center gap-12 mb-20 pt-8">
+             <div class="flex-1">
+                <h1 class="text-6xl font-serif font-bold mb-4 italic text-primary leading-tight">
+                   Chancy Maouene
+                </h1>
+                <p class="text-xl text-sage uppercase tracking-widest font-light mb-6">
+                   Software Architect • Systems Designer
+                </p>
+                <div class="h-1 w-24 bg-terra mb-8"></div>
+                <p class="text-lg text-primary/80 max-w-xl leading-relaxed">
+                    Building resilient systems through clean code and strategic architecture.
+                    Explore my latest research and technical thoughts below.
+                </p>
+             </div>
+
+             <div class="flex-1 flex justify-center perspective-container">
+                <div class="portrait-card">
+                   <Image
+                      src={portraitImage}
+                      alt="Chancy Maouene"
+                      class="rounded-[2.5rem] shadow-2xl w-auto h-[400px] object-contain bg-white/50 backdrop-blur-sm border-b-8 border-terra"
+                   />
+                </div>
+             </div>
+          </section>
+
+          <div class="mb-20">
+             <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-terra mb-6">Topics of Interest</h3>
+             <div class="flex flex-wrap gap-4">
+                {categories.map(cat => (
+                   <span class="px-6 py-3 bg-white border border-sage/20 rounded-2xl text-sm font-medium hover:border-terra hover:text-terra transition-all cursor-default italic">
+                      #{cat}
+                   </span>
+                ))}
+             </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+
+             <div class="md:col-span-2 space-y-8">
+                <div class="flex justify-between items-end border-b border-sage/20 pb-4">
+                    <h2 class="text-3xl font-serif italic">Latest Thoughts</h2>
+                    <a href="/blog" class="text-terra font-bold text-sm hover:underline">View all posts →</a>
+                </div>
+
+                {latestPosts.map(post => (
+                    <a href={`/blog/${post.id}/`} class="group block bg-white p-6 rounded-[2rem] border border-sage/10 hover:shadow-xl transition-all">
+                        <div class="flex gap-6 items-center">
+                            {post.data.heroImage && (
+                                <Image width={150} height={100} src={post.data.heroImage} alt="" class="rounded-xl hidden sm:block object-cover h-24 w-40" />
+                            )}
+                            <div>
+                                <span class="text-xs text-sage font-bold uppercase tracking-widest">
+                                    <FormattedDate date={post.data.pubDate} />
+                                </span>
+                                <h4 class="text-xl font-bold group-hover:text-terra transition-colors mt-1">{post.data.title}</h4>
+                                <p class="text-sm text-primary/60 line-clamp-1 mt-2">{post.data.description}</p>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+             </div>
+
+             <div class="space-y-8">
+                <div class="bg-primary text-background p-10 rounded-[2.5rem] relative overflow-hidden">
+                    <span class="text-6xl absolute -top-2 -left-2 opacity-20 font-serif">"</span>
+                    <p class="text-xl font-serif italic relative z-10">
+                        Software architecture is the art of deciding what is important.
+                    </p>
+                    <p class="text-xs mt-4 opacity-60 uppercase tracking-widest">— Robert C. Martin</p>
+                </div>
+
+                <div class="bg-sage-light p-8 rounded-[2.5rem]">
+                    <h3 class="text-terra font-bold text-xs uppercase tracking-widest mb-4 italic">Core Stack</h3>
+                    <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
+                        <span class="bg-white/50 p-2 rounded-lg">#Java_Spring</span>
+                        <span class="bg-white/50 p-2 rounded-lg">#Microservices</span>
+                        <span class="bg-white/50 p-2 rounded-lg">#Azure_Cloud</span>
+                        <span class="bg-white/50 p-2 rounded-lg">#Clean_Arch</span>
+                        <span class="bg-white/50 p-2 rounded-lg">#DDD</span>
+                        <span class="bg-white/50 p-2 rounded-lg">#CI_CD</span>
+                    </div>
+                </div>
+             </div>
+          </div>
+
+       </main>
+       <Footer />
+
+       <style>
+          .perspective-container { perspective: 1000px; }
+          .portrait-card {
+             transform-style: preserve-3d;
+             transform: rotateY(-10deg) rotateX(5deg);
+             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+             animation: float 6s ease-in-out infinite;
+          }
+          .portrait-card:hover { transform: rotateY(0deg) rotateX(0deg) scale(1.02); }
+          @keyframes float {
+             0%, 100% { transform: translatey(0px) rotateY(-10deg) rotateX(5deg); }
+             50% { transform: translatey(-15px) rotateY(-5deg) rotateX(10deg); }
+          }
+       </style>
+    </body>
 </html>

@@ -1,63 +1,157 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 import Layout from '../layouts/BlogPost.astro';
+import { Image } from 'astro:assets';
+import portraitImage from '../assets/hero-portrait.png';
 ---
 
 <Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
+    title="About"
+    description="Career path of Chancy Maouene, Software Architect"
+    pubDate={new Date('December 22 2024')}
+    heroImage=""
 >
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+    <div class="prose prose-stone max-w-none custom-about-container">
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+        <section class="flex flex-col md:flex-row gap-10 items-center not-prose mb-16 pt-20">
+            <div class="flex-1">
+                <h2 class="text-4xl font-serif italic text-primary mb-6">From a first computer to Software Architecture.</h2>
+                <p class="text-lg leading-relaxed text-primary/90">
+                    It all started in <strong class="font-bold text-terra italic">2019</strong>, the day I received my first computer. Where many saw only a machine, I discovered a gateway to universal knowledge. It was the answer to all the questions my friends and I were asking ourselves.
+                </p>
+                <p class="text-lg leading-relaxed text-primary/90 mt-4">
+                    What seemed like a foreign language to some became my favorite playground. Today, after years of curiosity fueled by technical challenges, <strong class="font-bold text-terra text-xl italic underline decoration-terra/30">I am completing my academic journey</strong> with a clear ambition: to design systems as complex and dynamic as those that changed the world.
+                </p>
+            </div>
+            <div class="w-72 perspective-container">
+                 <Image
+                    src={portraitImage}
+                    alt="Chancy Maouene"
+                    class="rounded-3xl shadow-2xl border-b-8 border-terra transform -rotate-2"
+                />
+            </div>
+        </section>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+        <h3 class="text-3xl font-serif mb-10 text-primary border-b border-sage pb-2 italic">Professional Experience</h3>
+        <div class="grid grid-cols-1 gap-8 not-prose mb-20">
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+            <div class="bg-primary text-background p-10 rounded-[2.5rem] relative overflow-hidden group border-b-8 border-terra">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <span class="text-8xl font-serif italic text-white font-bold">EDF</span>
+                </div>
+                <div class="relative z-10">
+                    <span class="text-terra font-mono text-sm uppercase tracking-tighter font-bold">Capgemini Engineering • Ongoing</span>
+                    <h4 class="text-3xl font-bold mt-2 mb-4 text-white italic underline decoration-terra decoration-2">Nuclear PLM Modernization</h4>
+                    <p class="text-base opacity-95 leading-relaxed mb-6 max-w-2xl">
+                        Critical optimization of the product lifecycle management in an industrial environment for nuclear power plants. I handle the installation, configuration, and debugging of complex software solutions meeting safety requirements.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        {["Java Spring", "MQL", "Gitlab", "Jenkins", "Sonarqube", "Unit Testing", "SAFe"].map(skill => (
+                            <span class="text-[11px] bg-white/10 px-3 py-1 rounded-full uppercase font-medium">{skill}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
+            <div class="bg-sage-light p-10 rounded-[2.5rem] border border-sage/20 shadow-sm">
+                <span class="text-terra font-mono text-sm uppercase tracking-tighter font-bold">Capgemini Engineering • TELLI Project (SNCF)</span>
+                <h4 class="text-2xl font-bold mt-2 mb-4 text-primary italic">Railway Digitalization</h4>
+                <p class="text-sm text-primary/80 leading-relaxed mb-6">
+                    Analysis of business processes and digitalization of railway equipment management via the 3DEXPERIENCE platform. Design of Azure infrastructure and automation of CI/CD pipelines.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    {["Azure", "CI/CD", "3DEXPERIENCE", "Github", "MQL"].map(skill => (
+                        <span class="text-[10px] border border-primary/20 px-3 py-1 rounded-full text-primary uppercase">{skill}</span>
+                    ))}
+                </div>
+            </div>
+
+             <div class="bg-white p-10 rounded-[2.5rem] border border-sage/20 shadow-sm opacity-80">
+                <span class="text-terra font-mono text-sm uppercase tracking-tighter font-bold">CS-Lane • 2021 - 2022</span>
+                <h4 class="text-2xl font-bold mt-2 mb-4 text-primary italic">Full Stack Developer</h4>
+                <p class="text-sm text-primary/80 leading-relaxed italic">
+                    Work-study apprenticeship: design of mobile applications, websites, and API integration studies.
+                </p>
+            </div>
+        </div>
+
+        <h3 class="text-3xl font-serif mb-10 text-primary border-b border-sage pb-2 italic">Academic Background</h3>
+        <div class="space-y-12 mb-20 not-prose">
+
+            <div class="flex gap-6 group">
+                <div class="flex flex-col items-center"><div class="w-4 h-4 rounded-full bg-terra shadow-lg"></div><div class="w-0.5 h-full bg-sage/30"></div></div>
+                <div class="pb-4">
+                    <span class="text-terra font-mono text-sm font-bold">2023 - 2025</span>
+                    <h4 class="text-xl font-bold text-primary italic">Master in Software Architecture — ESGI</h4>
+                    <p class="text-xs opacity-70 italic uppercase tracking-wider">Expert in Development Engineering (RNCP 36469)</p>
+                    <p class="text-sm mt-2 font-medium text-sage-dark">Focus: Microservices architecture, Hexagonal, DDD, DevOps, and Deep Learning.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-6 group">
+                <div class="flex flex-col items-center"><div class="w-4 h-4 rounded-full bg-sage"></div><div class="w-0.5 h-full bg-sage/30"></div></div>
+                <div class="pb-4">
+                    <span class="text-terra font-mono text-sm font-bold">2022 - 2023</span>
+                    <h4 class="text-xl font-bold text-primary italic">M1 Data Engineering — WebTech Institute</h4>
+                    <p class="text-sm">AWS Cloud, Data Management, Big Data, and Artificial Intelligence.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-6 group">
+                <div class="flex flex-col items-center"><div class="w-4 h-4 rounded-full bg-sage/50"></div><div class="w-0.5 h-full bg-sage/30"></div></div>
+                <div class="pb-4">
+                    <span class="text-terra font-mono text-sm font-bold">2021 - 2022</span>
+                    <h4 class="text-xl font-bold text-primary italic">Bachelor in Web Development — WebTech Institute</h4>
+                    <p class="text-sm text-sage-dark opacity-80 italic">Application Developer Designer Certification.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-6 group">
+                <div class="flex flex-col items-center"><div class="w-4 h-4 rounded-full bg-sage/30"></div><div class="w-0.5 h-full bg-sage/30"></div></div>
+                <div class="pb-4">
+                    <span class="text-terra font-mono text-sm font-bold">2019 - 2021</span>
+                    <h4 class="text-xl font-bold text-primary italic">Associate Degree in IT (BTS) — Cours Diderot</h4>
+                    <p class="text-sm opacity-70 italic">Development (PHP/MySQL) and hardware installation.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-6 group">
+                <div class="flex flex-col items-center"><div class="w-4 h-4 rounded-full bg-sage/20"></div></div>
+                <div>
+                    <span class="text-terra font-mono text-sm font-bold">2018 - 2019</span>
+                    <h4 class="text-xl font-bold text-primary italic">Scientific High School Diploma (Bac S) — Dom Helder Camara</h4>
+                    <p class="text-sm opacity-70 italic uppercase text-[10px]">Mathematics Specialty</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white border-2 border-terra/20 p-12 rounded-[3.5rem] text-center not-prose mb-10 shadow-xl relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-terra/5 rounded-full"></div>
+            <h5 class="text-terra uppercase tracking-widest text-xs font-bold mb-4 italic">MAJOR CERTIFICATION</h5>
+            <p class="text-4xl font-serif italic text-primary mb-4 leading-tight">Software Architecture & Design Patterns</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 text-sage-dark font-medium">
+                <span class="text-lg">University of Alberta</span>
+                <span class="hidden md:block w-1.5 h-1.5 rounded-full bg-terra"></span>
+                <span class="text-primary font-bold text-lg underline decoration-terra/40">March 2025</span>
+            </div>
+            <p class="mt-8 text-[11px] opacity-40 font-mono tracking-tighter">CERTIFICATION ID: 7TKPWEBL6R7Q</p>
+        </div>
+
+    </div>
 </Layout>
+
+<style>
+    .custom-about-container {
+        margin-top: 0 !important;
+    }
+
+    :global(.hero-image),
+    :global(.prose h1),
+    :global(.date),
+    :global(.prose hr:first-of-type) {
+        display: none !important;
+    }
+
+    .perspective-container {
+        perspective: 1000px;
+    }
+</style>
