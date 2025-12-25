@@ -39,38 +39,70 @@ import portraitImage from '../assets/hero-portrait.png';
                     <span class="text-8xl font-serif italic text-white font-bold">EDF</span>
                 </div>
                 <div class="relative z-10">
-                    <span class="text-terra font-mono text-sm uppercase tracking-tighter font-bold">Capgemini Engineering • Ongoing</span>
-                    <h4 class="text-3xl font-bold mt-2 mb-4 text-white italic underline decoration-terra decoration-2">Nuclear PLM Modernization</h4>
-                    <p class="text-base opacity-95 leading-relaxed mb-6 max-w-2xl">
-                        Critical optimization of the product lifecycle management in an industrial environment for nuclear power plants. I handle the installation, configuration, and debugging of complex software solutions meeting safety requirements.
+                    <span class="text-terra font-mono text-sm uppercase tracking-tighter font-bold">Capgemini Engineering • CDI</span>
+                    <h4 class="text-3xl font-bold mt-2 mb-4 text-white italic underline decoration-terra decoration-2">Software Engineer</h4>
+                    <p class="text-xs opacity-90 mb-4 italic">September 2024- Present • Paris Area · Hybrid</p>
+
+                    <div class="mb-6">
+                        <p class="text-sm font-bold text-terra mb-2">🔹 Nuclear PLM Modernization at EDF</p>
+                        <p class="text-sm opacity-95 leading-relaxed mb-3">
+                            Modernization and optimization of product lifecycle management processes within nuclear power plants. Critical work in an industrial environment requiring rigorous safety standards.
+                        </p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-2">Key Responsibilities:</p>
+                        <ul class="text-sm opacity-90 list-disc ml-5 space-y-1">
+                            <li>Installation and configuration of PLM solutions</li>
+                            <li>Analysis and correction of reported issues and software modifications based on client requirements and project specifications</li>
+                            <li>Unit and functional testing validated before production deployment</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            {["Java", "Spring", "MQL", "Gitlab", "MobaXterm", "Sonarqube", "Jenkins", "3DEXPERIENCE", "SAFe"].map(skill => (
+                                <span class="text-[10px] bg-white/10 px-2 py-1 rounded-full uppercase font-medium">{skill}</span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-sage-light p-10 rounded-[2.5rem] border border-sage/20 shadow-sm relative overflow-hidden group">
+                 <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <span class="text-8xl font-serif italic text-primary font-bold">SNCF</span>
+                </div>
+                <div class="relative z-10">
+                    <span class="text-terra font-mono text-sm uppercase tracking-tighter font-bold">Capgemini Engineering • Work-Study Contract</span>
+                    <h4 class="text-2xl font-bold mt-2 mb-4 text-primary italic">Software Engineer - PLM Project Mission – TELLI at SNCF 🚆</h4>
+                    <p class="text-xs opacity-90 mb-4 italic">September 2022 - June 2024  • Paris Area · Hybrid</p>
+                    <p class="text-sm opacity-95 leading-relaxed mb-3">
+                        Project aimed at improving and digitalizing the lifecycle management of railway equipment via Dassault Systèmes' 3DEXPERIENCE platform.
                     </p>
+                    <p class="text-sm opacity-90 leading-relaxed mb-2 font-bold">Key Responsibilities:</p>
+                    <ul class="text-sm opacity-90 list-disc ml-5 space-y-1 mb-6">
+                        <li>Analysis of business processes</li>
+                        <li>Azure infrastructure design</li>
+                        <li>Implementation and automation of CI/CD pipelines for development and production environments</li>
+                        <li>Collaboration with project teams using SAFe methodology (Agile at scale)</li>
+                    </ul>
                     <div class="flex flex-wrap gap-2">
-                        {["Java Spring", "MQL", "Gitlab", "Jenkins", "Sonarqube", "Unit Testing", "SAFe"].map(skill => (
-                            <span class="text-[11px] bg-white/10 px-3 py-1 rounded-full uppercase font-medium">{skill}</span>
+                        {["MQL", "Github", "MobaXterm", "3DEXPERIENCE", "Azure", "CI/CD", "SAFe"].map(skill => (
+                            <span class="text-[10px] border border-primary/20 px-2 py-1 rounded-full uppercase font-medium text-primary">{skill}</span>
                         ))}
                     </div>
                 </div>
             </div>
 
-            <div class="bg-sage-light p-10 rounded-[2.5rem] border border-sage/20 shadow-sm">
-                <span class="text-terra font-mono text-sm uppercase tracking-tighter font-bold">Capgemini Engineering • TELLI Project (SNCF)</span>
-                <h4 class="text-2xl font-bold mt-2 mb-4 text-primary italic">Railway Digitalization</h4>
-                <p class="text-sm text-primary/80 leading-relaxed mb-6">
-                    Analysis of business processes and digitalization of railway equipment management via the 3DEXPERIENCE platform. Design of Azure infrastructure and automation of CI/CD pipelines.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    {["Azure", "CI/CD", "3DEXPERIENCE", "Github", "MQL"].map(skill => (
-                        <span class="text-[10px] border border-primary/20 px-3 py-1 rounded-full text-primary uppercase">{skill}</span>
-                    ))}
-                </div>
-            </div>
-
-             <div class="bg-white p-10 rounded-[2.5rem] border border-sage/20 shadow-sm opacity-80">
-                <span class="text-terra font-mono text-sm uppercase tracking-tighter font-bold">CS-Lane • 2021 - 2022</span>
+            <div class="bg-white p-10 rounded-[2.5rem] border border-sage/20 shadow-sm opacity-80">
+                <span class="text-terra font-mono text-sm uppercase tracking-tighter font-bold">CS-Lane • Work-Study Contract</span>
                 <h4 class="text-2xl font-bold mt-2 mb-4 text-primary italic">Full Stack Developer</h4>
-                <p class="text-sm text-primary/80 leading-relaxed italic">
-                    Work-study apprenticeship: design of mobile applications, websites, and API integration studies.
+                <p class="text-xs opacity-70 mb-4 italic">June 2021 - July 2022 · 1 year 2 months • Elbeuf, Normandy, France</p>
+                <p class="text-sm text-primary/80 leading-relaxed mb-3">
+                    Development and design of digital solutions for clients, combining mobile and web technologies.
                 </p>
+                <p class="text-sm text-primary/90 font-medium mb-2">Key Responsibilities:</p>
+                <ul class="text-sm text-primary/80 list-disc ml-5 space-y-1 leading-relaxed">
+                    <li>Mobile application design and development</li>
+                    <li>Website design and implementation</li>
+                    <li>API integration studies and implementation</li>
+                    <li>Code updates and maintenance</li>
+                </ul>
             </div>
         </div>
 
@@ -79,38 +111,80 @@ import portraitImage from '../assets/hero-portrait.png';
 
             <div class="flex gap-6 group">
                 <div class="flex flex-col items-center"><div class="w-4 h-4 rounded-full bg-terra shadow-lg"></div><div class="w-0.5 h-full bg-sage/30"></div></div>
-                <div class="pb-4">
+                <div class="pb-8">
                     <span class="text-terra font-mono text-sm font-bold">2023 - 2025</span>
                     <h4 class="text-xl font-bold text-primary italic">Master in Software Architecture — ESGI</h4>
-                    <p class="text-xs opacity-70 italic uppercase tracking-wider">Expert in Development Engineering (RNCP 36469)</p>
-                    <p class="text-sm mt-2 font-medium text-sage-dark">Focus: Microservices architecture, Hexagonal, DDD, DevOps, and Deep Learning.</p>
+                    <p class="text-xs opacity-70 italic uppercase tracking-wider mb-2">Expert in Development Engineering and Software Architecture (RNCP 36469)</p>
+                    <p class="text-sm leading-relaxed text-sage-dark mb-4">
+                        Software architecture, Microservices architecture, Hexagonal architecture, Clean Architecture, Clean Code, DDD, Design patterns, JEE, Android, Flutter, Cryptography and software security, DevOps (Docker, Kubernetes, CI/CD, AWS), Deep Learning, Machine Learning, Reinforcement Learning, Software ergonomics and HCI, BDD/TDD, Professional communication, IT and Internet law.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        {["Scala", "IaC", "Clean Code", "API Development", "TypeScript", "BDD", "DevOps", "JEE", "Supervised Learning", "Flutter", "Terraform", "Performance Analysis", "Cryptography", "Unsupervised Learning", "Design Patterns", "Software Ergonomics", "Angular", "Cloud Computing"].map(s => <span class="text-[9px] border border-primary/20 px-2 py-0.5 rounded opacity-70">{s}</span>)}
+                    </div>
                 </div>
             </div>
 
             <div class="flex gap-6 group">
                 <div class="flex flex-col items-center"><div class="w-4 h-4 rounded-full bg-sage"></div><div class="w-0.5 h-full bg-sage/30"></div></div>
-                <div class="pb-4">
+                <div class="pb-8">
                     <span class="text-terra font-mono text-sm font-bold">2022 - 2023</span>
-                    <h4 class="text-xl font-bold text-primary italic">M1 Data Engineering — WebTech Institute</h4>
-                    <p class="text-sm">AWS Cloud, Data Management, Big Data, and Artificial Intelligence.</p>
+                    <h4 class="text-xl font-bold text-primary italic">Master 1 Data Engineering — WebTech Institute</h4>
+                    <p class="text-sm leading-relaxed text-sage-dark mb-4">
+                        Cloud AWS, Data Management, Deep Learning, Data/Big Data, Algorithms and data structures, Relational and non-relational database concepts and SQL, Software architecture, Design Patterns & TDD, AI - Artificial Intelligence, Data governance, Web architecture.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        {["Algorithms", "SQL", "Big Data", "Design Patterns", "Software Architecture", "DevOps", "Kubernetes", "GraphQL"].map(s => <span class="text-[9px] border border-primary/20 px-2 py-0.5 rounded opacity-70">{s}</span>)}
+                    </div>
                 </div>
             </div>
 
             <div class="flex gap-6 group">
                 <div class="flex flex-col items-center"><div class="w-4 h-4 rounded-full bg-sage/50"></div><div class="w-0.5 h-full bg-sage/30"></div></div>
-                <div class="pb-4">
+                <div class="pb-8">
                     <span class="text-terra font-mono text-sm font-bold">2021 - 2022</span>
-                    <h4 class="text-xl font-bold text-primary italic">Bachelor in Web Development — WebTech Institute</h4>
-                    <p class="text-sm text-sage-dark opacity-80 italic">Application Developer Designer Certification.</p>
+                    <h4 class="text-xl font-bold text-primary italic">Bachelor's degree in Web Development & IT — WebTech Institute</h4>
+                    <p class="text-xs opacity-70 italic uppercase tracking-wider mb-2">Application Developer Designer (RNCP 37873)</p>
+                    <p class="text-sm leading-relaxed text-sage-dark mb-4">
+                        HTML5/CSS3/JavaScript/Java, Database management (NoSQL databases and applications with MongoDB), Backend Node.JS/Symfony/PHP, Algorithms, Mobile iOS & Android, .NET Development, Fab Lab Project.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        {["Software Testing", "Communication", "SQL", "GitHub", "API Development", "JavaScript", "TypeScript", "Programming Language Theory", "C", "Python", "Maven", "GCP", "REST APIs", "Teamwork", "Problem Solving", "Git", "Java", "Node.js", "Coding Standards", "Angular", "Linux", "Cloud Computing", "Android Mobile"].map(s => <span class="text-[9px] border border-primary/20 px-2 py-0.5 rounded opacity-70">{s}</span>)}
+                    </div>
                 </div>
             </div>
 
             <div class="flex gap-6 group">
                 <div class="flex flex-col items-center"><div class="w-4 h-4 rounded-full bg-sage/30"></div><div class="w-0.5 h-full bg-sage/30"></div></div>
-                <div class="pb-4">
+                <div class="pb-8">
                     <span class="text-terra font-mono text-sm font-bold">2019 - 2021</span>
-                    <h4 class="text-xl font-bold text-primary italic">Associate Degree in IT (BTS) — Cours Diderot</h4>
-                    <p class="text-sm opacity-70 italic">Development (PHP/MySQL) and hardware installation.</p>
+                    <h4 class="text-xl font-bold text-primary italic">BTS SIO option SLAM (Software Solutions and Business Applications) — Cours Diderot</h4>
+                    <p class="text-xs opacity-70 italic mb-3">Awarded by the Minister of Higher Education, Research and Innovation</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                        <div class="text-[12px] bg-sage/5 p-3 rounded-xl border border-sage/10">
+                            <p class="font-bold mb-1 underline text-primary">First Year:</p>
+                            <ul class="list-disc ml-4 space-y-0.5 opacity-80 text-sage-dark leading-relaxed">
+                                <li>IT asset management</li>
+                                <li>Incident response and assistance requests</li>
+                                <li>Development of online presence</li>
+                                <li>Project-based work</li>
+                                <li>Providing IT services to users</li>
+                                <li>Professional development organization</li>
+                                <li>Application solution design and development</li>
+                                <li>Data management</li>
+                                <li>Personal data protection and equipment security</li>
+                            </ul>
+                        </div>
+                        <div class="text-[12px] bg-sage/5 p-3 rounded-xl border border-sage/10">
+                            <p class="font-bold mb-1 underline text-primary">Second Year:</p>
+                            <ul class="list-disc ml-4 space-y-0.5 opacity-80 text-sage-dark leading-relaxed">
+                                <li>Enhancement of first-year skills</li>
+                                <li>Corrective and evolutionary maintenance of application solutions</li>
+                                <li>Preservation of the organization's digital identity</li>
+                                <li>Ensuring availability, integrity and confidentiality of IT services</li>
+                                <li>Cybersecurity of application solutions and their development</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
