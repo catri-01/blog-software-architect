@@ -12,6 +12,18 @@ const allPosts = await getCollection('blog');
 const posts = allPosts
     .filter(post => post.data.draft !== true)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categories = [
+   "Java Development",
+   "Software Architecture",
+   "Design Patterns",
+   "Cloud & DevOps",
+   "Technical support fundamentals",
+   "Computer networking",
+   "Operating systems",
+   "Sys admin & infrastructure services",
+   "IT security"
+];
 ---
 
 <!doctype html>
@@ -26,7 +38,7 @@ const posts = allPosts
              padding: 5em 1em;
           }
           .blog-header {
-             margin-bottom: 4rem;
+             margin-bottom: 2rem;
              border-bottom: 1px solid #f0f0f0;
              padding-bottom: 2rem;
           }
@@ -35,6 +47,12 @@ const posts = allPosts
              font-size: 3rem;
              margin: 0;
              font-style: italic;
+          }
+          .categories-list {
+             display: flex;
+             flex-wrap: wrap;
+             gap: 0.8rem;
+             margin-bottom: 4rem;
           }
           .post-list {
              display: flex;
@@ -123,6 +141,14 @@ const posts = allPosts
              <h1>Software Architecture</h1>
              <p class="post-description">Latest insights, research, and technical thoughts on building resilient systems.</p>
           </header>
+
+          <div class="categories-list">
+             {categories.map(cat => (
+                <a href={`/blog/category/${cat.toLowerCase().replace(/\s+/g, '-')}`} class="tag" style="text-decoration: none; padding: 8px 16px; font-size: 0.9rem; transition: all 0.2s;">
+                   #{cat}
+                </a>
+             ))}
+          </div>
 
           <section>
              <ul class="post-list">

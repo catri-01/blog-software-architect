@@ -1,0 +1,234 @@
+---
+// src/pages/blog/category/[category].astro
+import { getCollection } from 'astro:content';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import { SITE_TITLE } from '../../../consts';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  const publishedPosts = allPosts.filter(post => post.data.draft !== true);
+
+  // Liste explicite de toutes les catégories pour générer les pages même vides
+  const definedCategories = [
+    'Introduction to IT',
+    'Java Development',
+    'Software Architecture',
+    'Design Patterns',
+    'Cloud & DevOps',
+    'Technical support fundamentals',
+    'Computer networking',
+    'Operating systems',
+    'Sys admin & infrastructure services',
+    'IT security'
+  ];
+
+  // On combine avec les catégories existantes au cas où
+  const usedCategories = [...new Set(publishedPosts.map(post => post.data.category).filter(Boolean))];
+  const allCategories = [...new Set([...definedCategories, ...usedCategories])];
+
+  return allCategories.map(category => ({
+    params: {
+      category: category.toLowerCase().replace(/\s+/g, '-')
+    },
+    props: {
+      categoryName: category,
+      posts: publishedPosts
+        .filter(post => post.data.category === category)
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    }
+  }));
+}
+
+const { categoryName, posts } = Astro.props;
+
+// Category icons mapping
+const categoryIcons: Record<string, string> = {
+  'Introduction to IT': '',
+  'Java Development': '',
+  'Software Architecture': '',
+  'Design Patterns': '',
+  'Cloud & DevOps': '',
+  'Technical support fundamentals': '',
+  'Computer networking': '',
+  'Operating systems': '',
+  'Sys admin & infrastructure services': '',
+  'IT security': '',
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`${categoryName} | ${SITE_TITLE}`} description={`Articles about ${categoryName}`} />
+    <style>
+      main {
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        padding: 3em 1em;
+      }
+      .category-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .category-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+      .category-title {
+        font-family: serif;
+        font-size: 2.5rem;
+        font-style: italic;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      .post-list {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      .post-item a {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        gap: 2rem;
+        text-decoration: none;
+        align-items: center;
+      }
+      .post-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .post-item .title {
+        margin: 0;
+        color: #242424;
+        line-height: 1.3;
+        font-size: 1.5rem;
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        transition: color 0.2s ease;
+      }
+      .post-description {
+        color: #6b6b6b;
+        font-size: 1rem;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .post-item img {
+        width: 200px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+      .post-metadata {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: #6b6b6b;
+        margin-top: 0.5rem;
+      }
+      .tag {
+        background: #f2f2f2;
+        padding: 2px 8px;
+        border-radius: 100px;
+        color: #242424;
+      }
+      .post-item a:hover .title {
+        color: #E07A5F;
+      }
+      .back-link {
+        display: inline-block;
+        color: #E07A5F;
+        text-decoration: none;
+        margin-bottom: 2rem;
+        font-weight: 600;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+      @media (max-width: 720px) {
+        .post-item a {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .post-item img {
+          width: 100%;
+          height: 200px;
+          order: -1;
+        }
+        .category-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+
+      <a href="/blog" class="back-link">← Back to all articles</a>
+
+      <!-- Category Header -->
+      <div class="category-header">
+        <div class="category-icon">{categoryIcons[categoryName] || '📝'}</div>
+        <h1 class="category-title">{categoryName}</h1>
+        <p class="post-description">
+          {posts.length} {posts.length === 1 ? 'article' : 'articles'} in this category
+        </p>
+      </div>
+
+      <!-- Articles List -->
+      {posts.length === 0 ? (
+        <div style="text-align: center; padding: 3rem 0;">
+          <p style="font-size: 1.2rem; color: #6b6b6b; font-style: italic;">No articles in this category yet.</p>
+        </div>
+      ) : (
+        <ul class="post-list">
+          {posts.map((post) => (
+            <li class="post-item">
+              <a href={`/blog/${post.id}/`}>
+                <div class="post-content">
+                  <div class="post-metadata">
+                    <span>Chancy Maouene</span>
+                    <span>•</span>
+                    <FormattedDate date={post.data.pubDate} />
+                  </div>
+                  <h4 class="title">{post.data.title}</h4>
+                  <p class="post-description">{post.data.description}</p>
+                  <div class="post-metadata">
+                    <span class="tag">{categoryName}</span>
+                    {post.data.tags && post.data.tags.slice(0, 2).map((tag: string) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                {post.data.heroImage && (
+                  <Image
+                    width={400}
+                    height={260}
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                  />
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -16,7 +16,17 @@ const latestPosts = allPosts
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .slice(0, 3);
 
-const categories = ["Java Development", "Software Architecture", "Design Patterns", "Cloud & DevOps"];
+const categories = [
+   "Java Development",
+   "Software Architecture",
+   "Design Patterns",
+   "Cloud & DevOps",
+   "Technical support fundamentals",
+   "Computer networking",
+   "Operating systems",
+   "Sys admin & infrastructure services",
+   "IT security"
+];
 ---
 
 <!doctype html>
@@ -58,9 +68,9 @@ const categories = ["Java Development", "Software Architecture", "Design Pattern
              <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-terra mb-6">Topics of Interest</h3>
              <div class="flex flex-wrap gap-4">
                 {categories.map(cat => (
-                   <span class="px-6 py-3 bg-white border border-sage/20 rounded-2xl text-sm font-medium hover:border-terra hover:text-terra transition-all cursor-default italic">
+                   <a href={`/blog/category/${cat.toLowerCase().replace(/\s+/g, '-')}`} class="px-6 py-3 bg-white border border-sage/20 rounded-2xl text-sm font-medium hover:border-terra hover:text-terra transition-all cursor-pointer italic no-underline text-primary">
                       #{cat}
-                   </span>
+                   </a>
                 ))}
              </div>
           </div>
