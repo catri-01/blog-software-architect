@@ -1,5 +1,5 @@
 ---
-title: 'Apache Camel Architecture'
+title: 'Apache Camel Architecture Part 1'
 description: 'Discover how Apache Camel simplifies enterprise integration patterns and connects diverse systems in modern microservices architectures.'
 pubDate: 'Jan 24 2026'
 category: 'Software Architecture'
