@@ -70,6 +70,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				margin-bottom: 2rem;
 				padding-left: 1.5rem;
 			}
+			
+			.prose :global(ul) { list-style-type: disc; }
+			.prose :global(ol) { list-style-type: decimal; }
 
 			.prose :global(li) {
 				margin-bottom: 0.75rem;

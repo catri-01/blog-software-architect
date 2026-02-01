@@ -1,6 +1,6 @@
 ---
 title: 'Understanding Technical Support Fundamentals'
-description: 'A comprehensive guide to the core principles and best practices of technical support in modern IT environments'
+description: 'Master the core skills of technical support: from active listening and systematic troubleshooting to effective documentation and customer service.'
 pubDate: 'Jan 02 2026'
 category: 'Technical support fundamentals'
 tags: ['support', 'troubleshooting', 'customer-service', 'IT']

@@ -1,6 +1,6 @@
 ---
 title: 'What is Information Technology?'
-description: 'A comprehensive guide to the core principles and best practices of technical support in modern IT environments'
+description: 'Explore the impact of Information Technology on society, the importance of bridging the digital divide, and the diverse career paths available in the industry.'
 pubDate: 'Jan 17 2026'
 category: 'Introduction to IT'
 tags: ['support', 'troubleshooting', 'customer-service', 'IT']
