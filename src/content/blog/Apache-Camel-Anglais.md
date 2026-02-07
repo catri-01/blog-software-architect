@@ -15,8 +15,9 @@ draft: false
 - Enterprises have hundreds or even thousands of applications:
     - These applications have complex communication patterns.
     - They use a variety of transports (HTTP, Queues, etc.).
-    - They use a variety of protocols (HTTP, JMS, AMQP).
-- The evolution of Cloud and microservices makes enterprise integrations even more complex.
+    - They use a variety of protocols (HTTP, JMS, AMQP). 
+
+The evolution of Cloud and microservices makes enterprise integrations even more complex.
 - **How can we simplify enterprise integration?**
     - How do we simplify the code we write to allow a microservice to communicate with other microservices?
     - How do we ensure it follows all best practices?
